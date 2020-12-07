@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 public class ParallelTests
@@ -19,7 +20,7 @@ public class ParallelTests
 		driver.manage().window().maximize();
 		try
 		{
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		}
 		catch(Exception e)
 		{
@@ -31,14 +32,6 @@ public class ParallelTests
 	public void actionFBONChrome()
 	{
 		driver.findElement(By.name("login")).click();
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
 	}
 	
 	@Test(groups = "Firefox")
@@ -51,27 +44,23 @@ public class ParallelTests
 		driver.manage().window().maximize();
 		try
 		{
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		driver.close();
 	}
 	
 	@Test(groups = "Firefox", dependsOnMethods = "launchFirefox")
 	public void actionFBONFirefox()
 	{
 		driver.findElement(By.name("login")).click();
-		try
-		{
-			Thread.sleep(3000);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		driver.close();
+	}
+	
+	@AfterTest
+	public void closeBrowsers()
+	{
+		driver.quit();
 	}
 }

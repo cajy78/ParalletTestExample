@@ -5,8 +5,6 @@
     <classes>
       <class name="test.ParallelTests">
         <methods>
-          <include name="launchChrome"/>
-          <include name="actionFBONChrome"/>
           <include name="actionFBONFirefox"/>
           <include name="launchFirefox"/>
         </methods>

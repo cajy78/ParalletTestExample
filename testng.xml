@@ -2,6 +2,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="10" parallel="methods" name="Suite">
   <test thread-count="10" parallel="methods" name="Test">
+    <groups>
+    	<run>
+    		<include name="Chrome"></include>
+    		<include name="Firefox"></include>
+    	</run>
+    </groups>
     <classes>
       <class name="test.ParallelTests"/>
     </classes>
